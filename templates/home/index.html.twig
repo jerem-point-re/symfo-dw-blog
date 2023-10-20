@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %} {% block title %}Hello HomeController!{% endblock%}
+
+{% block body %}
+
+    {% if app.user %}
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+        {{ form_end(form) }}
+    {% endif %}
+
+    {% for p in allPosts %}
+        <p>{{ p.user.email }}</p>
+        <p>{{ p.content }}</p>
+        <a href="{{ path('app_post', {'id': p.id}) }}">Show comments</a>
+        <br><hr><br>
+    {% endfor %}
+
+{% endblock %}
